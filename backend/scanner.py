@@ -8,6 +8,7 @@ def obtener_rango_ip_local() -> str:
     """
     Detecta automáticamente el rango de red local (ej. '192.168.1.0/24').
     """
+    
     try:
         # Método robusto para obtener la IP local real
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -27,6 +28,7 @@ def escanear_red(rango_ip: str = None) -> list[dict]:
     """
     if rango_ip is None:
         rango_ip = obtener_rango_ip_local()
+    print(f"[DEBUG] Escaneando el rango: {rango_ip}")
 
     try:
         paquete = Ether(dst="ff:ff:ff:ff:ff:ff") / ARP(pdst=rango_ip)
@@ -39,7 +41,9 @@ def escanear_red(rango_ip: str = None) -> list[dict]:
                 "mac": recibido.hwsrc
             })
 
+        print(f"[DEBUG] Dispositivos detectados: {dispositivos}")
         return dispositivos
     except Exception as e:
         print(f"[ERROR] al escanear red: {e}")
         return []
+
