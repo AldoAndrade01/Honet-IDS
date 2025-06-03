@@ -141,4 +141,79 @@ body {
       height: 220px !important;
     }
   }
+/* Sección glassmorphism ¿Cómo funciona? */
+.glass-section {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    margin: 40px auto 0 auto;
+    background: rgba(255,255,255,0.12);
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(31, 38, 135, 0.13);
+    backdrop-filter: blur(10px) saturate(1.5);
+    -webkit-backdrop-filter: blur(10px) saturate(1.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 2.2rem 1.4rem 1.6rem 1.4rem;
+    color: #fff;
+    text-align: left;
+  }
+  
+  .glass-section h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #c4b5fd;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin-bottom: 1.1rem;
+    background: rgba(127,90,240,0.11);
+    border-radius: 14px;
+    padding: 1rem 1rem 1rem 0.8rem;
+    box-shadow: 0 1px 8px rgba(127,90,240,0.08);
+  }
+  
+  .step-number {
+    display: inline-block;
+    font-size: 1.05rem;
+    background: #7f5af0;
+    color: #fff;
+    border-radius: 50%;
+    width: 2.2em;
+    height: 2.2em;
+    text-align: center;
+    line-height: 2.2em;
+    font-weight: bold;
+    margin-right: 0.3em;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(127,90,240,0.15);
+  }
+  
+  @media (max-width: 600px) {
+    .glass-section {
+      max-width: 99vw;
+      padding: 1rem 0.4rem;
+    }
+    .steps li {
+      padding: 0.6rem 0.7rem;
+      font-size: 0.98rem;
+    }
+    .step-number {
+      font-size: 0.97rem;
+      width: 1.8em;
+      height: 1.8em;
+      line-height: 1.8em;
+    }
+  }
   
