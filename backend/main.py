@@ -1,9 +1,12 @@
+# backend/main.py
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from scanner import escanear_red  # Importamos tu módulo
 
 app = FastAPI()
 
-# Permitir conexión desde el frontend
+# Configurar CORS para desarrollo local
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -11,7 +14,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Dummy endpoint
-@app.get("/alertas")
-def get_alertas():
-    return [{"ip": "192.168.0.23", "riesgo": 0.91}]
+@app.get("/")
+def root():
+    return {"message": "Bienvenido a Honet-IDS API"}
+
+@app.get("/dispositivos")
+def get_dispositivos():
+    try:
+        dispositivos = escanear_red()
+        return dispositivos
+    except Exception as e:
+        return {"error": str(e)}
